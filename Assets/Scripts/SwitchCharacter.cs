@@ -20,6 +20,7 @@ public class SwitchCharacter : MonoBehaviour
     //Prefabs of Characters
     public List<Sprite> characterPrefab = new List<Sprite>();
 
+    private MovementController _movementController;
     private SpriteRenderer _spriteRenderer;
     private CapsuleCollider2D _capsuleCollider2D;
 
@@ -30,10 +31,18 @@ public class SwitchCharacter : MonoBehaviour
     [SerializeField] private Vector2 capsuleSmallSize;
     [SerializeField] private Vector2 capsuleSmallOffset;
 
+    [Header("Lyon Stats")] 
+    [SerializeField] private float _jumpLyonForce;
+    // [Header("Fede Stats")] 
+    // [Header("Mario Stats")] 
+    [Header("Tomas Stats")] 
+    [SerializeField] private float _speedTomas;
+
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        _movementController = GetComponent<MovementController>();
 
         _colliderDefaultSize = _capsuleCollider2D.size;
         _colliderDefaultOffset = _capsuleCollider2D.offset;
@@ -54,6 +63,8 @@ public class SwitchCharacter : MonoBehaviour
                 //set the size and offset to the default values
                 _capsuleCollider2D.size = _colliderDefaultSize;
                 _capsuleCollider2D.offset = _colliderDefaultOffset;
+                _movementController.SetDefaultValues();
+                _movementController.jumpForce = _jumpLyonForce;
 
                 break;
             case Character.Fede:
@@ -63,6 +74,8 @@ public class SwitchCharacter : MonoBehaviour
                 _capsuleCollider2D.size = _colliderDefaultSize;
                 _capsuleCollider2D.offset = _colliderDefaultOffset;
 
+                _movementController.SetDefaultValues();
+
                 break;
             case Character.Mario:
                 //Change the sprite
@@ -70,6 +83,8 @@ public class SwitchCharacter : MonoBehaviour
                 //set the size and offset to the default values
                 _capsuleCollider2D.size = _colliderDefaultSize;
                 _capsuleCollider2D.offset = _colliderDefaultOffset;
+                
+                _movementController.SetDefaultValues();
 
                 break;
             case Character.Tomas:
@@ -78,7 +93,10 @@ public class SwitchCharacter : MonoBehaviour
                 //set the size and offset to the default values
                 _capsuleCollider2D.size = capsuleSmallSize;
                 _capsuleCollider2D.offset = capsuleSmallOffset;
+                
+                _movementController.SetDefaultValues();
 
+                _movementController.speedMovement = _speedTomas;
                 break;
 
             default:
@@ -86,6 +104,7 @@ public class SwitchCharacter : MonoBehaviour
                 //set the size and offset to the default values
                 _capsuleCollider2D.size = _colliderDefaultSize;
                 _capsuleCollider2D.offset = _colliderDefaultOffset;
+                _movementController.jumpForce = _jumpLyonForce;
                 break;
         }
     }
