@@ -107,12 +107,14 @@ public class SwitchCharacter : MonoBehaviour
         }
     }
 
+    //Set to default values the collider
     void DefaultCollider()
     {
         _capsuleCollider2D.size = _colliderDefaultSize;
         _capsuleCollider2D.offset = _colliderDefaultOffset;
     }
 
+    //Method for switch characters from UI buttons 
     public void Switch2Lyon()
     {
         characterEnum = Character.Lyon;

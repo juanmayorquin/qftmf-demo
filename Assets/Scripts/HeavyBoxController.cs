@@ -28,6 +28,9 @@ public class HeavyBoxController : MonoBehaviour
         ChangeMass();
     }
 
+    
+    //Method for change the object mass when the player has the Mario Character
+    //when is other different the object is too heavy
     private void ChangeMass()
     {
         if (_switchCharacter.characterEnum == SwitchCharacter.Character.Mario)

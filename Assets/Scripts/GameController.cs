@@ -22,21 +22,22 @@ public class GameController : MonoBehaviour
     {
         _playerControllers.Enable();
 
-        // Escucha cuando se presiona la tecla
+        // Listen whe the ey is pressed
         _playerControllers.Player.Menu.performed += OpenMenu;
 
-        // Escucha cuando se suelta la tecla
+        // Listen whe the ey is released
         _playerControllers.Player.Menu.canceled += CloseMenu;
     }
 
     private void OnDisable()
     {
         _playerControllers.Disable();
-
+        //unsubscribe to the events
         _playerControllers.Player.Menu.performed -= OpenMenu;
         _playerControllers.Player.Menu.canceled -= CloseMenu;
     }
 
+    //Open the menu when the player hold the key
     private void OpenMenu(InputAction.CallbackContext context)
     {
         if (!_isMenuOpen)
@@ -46,7 +47,7 @@ public class GameController : MonoBehaviour
             characterMenu.SetActive(true);
         }
     }
-
+    //close the menu when the player release the key
     private void CloseMenu(InputAction.CallbackContext context)
     {
         if (_isMenuOpen)
