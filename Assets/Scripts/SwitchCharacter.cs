@@ -61,8 +61,8 @@ public class SwitchCharacter : MonoBehaviour
                 //Change the sprite
                 _spriteRenderer.sprite =  characterPrefab[0];
                 //set the size and offset to the default values
-                _capsuleCollider2D.size = _colliderDefaultSize;
-                _capsuleCollider2D.offset = _colliderDefaultOffset;
+                DefaultCollider();
+                
                 _movementController.SetDefaultValues();
                 _movementController.jumpForce = _jumpLyonForce;
 
@@ -71,8 +71,7 @@ public class SwitchCharacter : MonoBehaviour
                 //Change the sprite
                 _spriteRenderer.sprite =  characterPrefab[1];
                 //set the size and offset to the default values
-                _capsuleCollider2D.size = _colliderDefaultSize;
-                _capsuleCollider2D.offset = _colliderDefaultOffset;
+                DefaultCollider();
 
                 _movementController.SetDefaultValues();
 
@@ -81,8 +80,7 @@ public class SwitchCharacter : MonoBehaviour
                 //Change the sprite
                 _spriteRenderer.sprite =  characterPrefab[2];
                 //set the size and offset to the default values
-                _capsuleCollider2D.size = _colliderDefaultSize;
-                _capsuleCollider2D.offset = _colliderDefaultOffset;
+                DefaultCollider();
                 
                 _movementController.SetDefaultValues();
 
@@ -102,10 +100,33 @@ public class SwitchCharacter : MonoBehaviour
             default:
                 _spriteRenderer.sprite =  characterPrefab[0];
                 //set the size and offset to the default values
-                _capsuleCollider2D.size = _colliderDefaultSize;
-                _capsuleCollider2D.offset = _colliderDefaultOffset;
+                DefaultCollider();
+                _movementController.SetDefaultValues();
                 _movementController.jumpForce = _jumpLyonForce;
                 break;
         }
+    }
+
+    void DefaultCollider()
+    {
+        _capsuleCollider2D.size = _colliderDefaultSize;
+        _capsuleCollider2D.offset = _colliderDefaultOffset;
+    }
+
+    public void Switch2Lyon()
+    {
+        characterEnum = Character.Lyon;
+    }
+    public void Switch2Fede()
+    {
+        characterEnum = Character.Fede;
+    }
+    public void Switch2Mario()
+    {
+        characterEnum = Character.Mario;
+    }
+    public void Switch2Tomas()
+    {
+        characterEnum = Character.Tomas;
     }
 }

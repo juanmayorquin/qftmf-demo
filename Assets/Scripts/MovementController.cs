@@ -90,10 +90,6 @@ public class MovementController : MonoBehaviour
         {
             _rb2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);  
         }
-        else
-        {
-            Debug.Log("No puedo saltar, no estoy en el suelo");
-        }
     }
    
 }
