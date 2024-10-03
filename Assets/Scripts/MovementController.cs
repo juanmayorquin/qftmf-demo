@@ -16,8 +16,8 @@ public class MovementController : MonoBehaviour
     
     //Components for logic and Sprites
     [SerializeField] private GroundLogic _groundLogic;
-    private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
+    public Animator _animator;
+    public SpriteRenderer _spriteRenderer;
     
     private Rigidbody2D _rb2D;
     private void Awake()

@@ -12,6 +12,14 @@ public class GroundLogic : MonoBehaviour
             Debug.Log("Player tocando el suelo");
         }
     }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Ground"))  
+        {
+            isGrounded = true;
+            Debug.Log("Player tocando el suelo");
+        }
+    }
 
     private void OnTriggerExit2D(Collider2D other)
     {

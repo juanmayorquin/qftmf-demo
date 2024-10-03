@@ -18,8 +18,9 @@ public class SwitchCharacter : MonoBehaviour
     public Character characterEnum;
     
     //Prefabs of Characters
-    public List<Sprite> characterPrefab = new List<Sprite>();
-
+    // public List<Sprite> characterPrefab = new List<Sprite>();
+    public List<GameObject> characterGO = new List<GameObject>();
+    
     private MovementController _movementController;
     private SpriteRenderer _spriteRenderer;
     private CapsuleCollider2D _capsuleCollider2D;
@@ -59,7 +60,14 @@ public class SwitchCharacter : MonoBehaviour
         {
             case Character.Lyon:
                 //Change the sprite
-                _spriteRenderer.sprite =  characterPrefab[0];
+                // _spriteRenderer.sprite =  characterPrefab[0];
+                characterGO[0].SetActive(true);
+                characterGO[1].SetActive(false);
+                characterGO[2].SetActive(false);
+                characterGO[3].SetActive(false);
+
+                _movementController._animator = characterGO[0].GetComponent<Animator>();
+                _movementController._spriteRenderer =  characterGO[0].GetComponent<SpriteRenderer>();
                 //set the size and offset to the default values
                 DefaultCollider();
                 
@@ -69,7 +77,14 @@ public class SwitchCharacter : MonoBehaviour
                 break;
             case Character.Fede:
                 //Change the sprite
-                _spriteRenderer.sprite =  characterPrefab[1];
+                // _spriteRenderer.sprite =  characterPrefab[1];
+                characterGO[1].SetActive(true);
+                characterGO[0].SetActive(false);
+                characterGO[2].SetActive(false);
+                characterGO[3].SetActive(false);
+
+                _movementController._animator = characterGO[1].GetComponent<Animator>();
+                _movementController._spriteRenderer =  characterGO[1].GetComponent<SpriteRenderer>();
                 //set the size and offset to the default values
                 DefaultCollider();
 
@@ -78,7 +93,14 @@ public class SwitchCharacter : MonoBehaviour
                 break;
             case Character.Mario:
                 //Change the sprite
-                _spriteRenderer.sprite =  characterPrefab[2];
+                // _spriteRenderer.sprite =  characterPrefab[2];
+                characterGO[2].SetActive(true);
+                characterGO[1].SetActive(false);
+                characterGO[0].SetActive(false);
+                characterGO[3].SetActive(false);
+
+                _movementController._animator = characterGO[2].GetComponent<Animator>();
+                _movementController._spriteRenderer =  characterGO[2].GetComponent<SpriteRenderer>();
                 //set the size and offset to the default values
                 DefaultCollider();
                 
@@ -87,7 +109,14 @@ public class SwitchCharacter : MonoBehaviour
                 break;
             case Character.Tomas:
                 //Change the sprite
-                _spriteRenderer.sprite =  characterPrefab[3];
+                // _spriteRenderer.sprite =  characterPrefab[3];
+                characterGO[3].SetActive(true);
+                characterGO[1].SetActive(false);
+                characterGO[2].SetActive(false);
+                characterGO[0].SetActive(false);
+
+                _movementController._animator = characterGO[3].GetComponent<Animator>();
+                _movementController._spriteRenderer =  characterGO[3].GetComponent<SpriteRenderer>();
                 //set the size and offset to the default values
                 _capsuleCollider2D.size = capsuleSmallSize;
                 _capsuleCollider2D.offset = capsuleSmallOffset;
@@ -98,7 +127,14 @@ public class SwitchCharacter : MonoBehaviour
                 break;
 
             default:
-                _spriteRenderer.sprite =  characterPrefab[0];
+                // _spriteRenderer.sprite =  characterPrefab[0];
+                characterGO[0].SetActive(true);
+                characterGO[1].SetActive(false);
+                characterGO[2].SetActive(false);
+                characterGO[3].SetActive(false);
+
+                _movementController._animator = characterGO[0].GetComponent<Animator>();
+                _movementController._spriteRenderer =  characterGO[0].GetComponent<SpriteRenderer>();
                 //set the size and offset to the default values
                 DefaultCollider();
                 _movementController.SetDefaultValues();
