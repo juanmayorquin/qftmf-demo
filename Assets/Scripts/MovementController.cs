@@ -23,6 +23,7 @@ public class MovementController : MonoBehaviour
     private void Awake()
     {
         _playerControllers = new();
+        _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb2D = GetComponent<Rigidbody2D>();
 
@@ -53,8 +54,8 @@ public class MovementController : MonoBehaviour
     {
         // Se aplica el movimiento horizontal
         _rb2D.velocity = new Vector2(speedMovement * _direction.x, _rb2D.velocity.y);
-        // _animator.SetBool("Move", _horizontal.x != 0);
-        // _animator.SetBool("Jump", !_groundLogic.IsGrounded); 
+        _animator.SetBool("Move", _direction.x != 0);
+        _animator.SetBool("Jump", !_groundLogic.isGrounded); 
         
         if (_direction.x > 0)
         {
