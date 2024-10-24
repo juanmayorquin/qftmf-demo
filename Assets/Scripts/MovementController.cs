@@ -57,7 +57,7 @@ public class MovementController : MonoBehaviour
         // Se aplica el movimiento horizontal
         _rb2D.velocity = new Vector2(speedMovement * _direction.x, _rb2D.velocity.y);
         _animator.SetBool("Move", _direction.x != 0);
-        _animator.SetBool("Jump", canJump); 
+        _animator.SetBool("Jump", !canJump); 
         
         if (_direction.x > 0)
         {
