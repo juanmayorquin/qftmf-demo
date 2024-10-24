@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -15,11 +16,12 @@ public class MovementController : MonoBehaviour
     public float defaultSpeed;
     
     //Components for logic and Sprites
-    [SerializeField] private GroundLogic _groundLogic;
     public Animator _animator;
     public SpriteRenderer _spriteRenderer;
     
     private Rigidbody2D _rb2D;
+
+    private bool canJump;
     private void Awake()
     {
         _playerControllers = new();
@@ -55,7 +57,7 @@ public class MovementController : MonoBehaviour
         // Se aplica el movimiento horizontal
         _rb2D.velocity = new Vector2(speedMovement * _direction.x, _rb2D.velocity.y);
         _animator.SetBool("Move", _direction.x != 0);
-        _animator.SetBool("Jump", !_groundLogic.isGrounded); 
+        _animator.SetBool("Jump", canJump); 
         
         if (_direction.x > 0)
         {
@@ -86,12 +88,26 @@ public class MovementController : MonoBehaviour
     }
     private void Jump(InputAction.CallbackContext context)
     {
-        //Se accede a la logica del script de GroundLogic, primero confirmando que este el objeto referenciado
-        if (_groundLogic != null && _groundLogic.isGrounded)  
+        if (canJump)  
         {
             _rb2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);  
         }
     }
-   
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            canJump = false;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            canJump = true;
+        }
+    }
 }
 
