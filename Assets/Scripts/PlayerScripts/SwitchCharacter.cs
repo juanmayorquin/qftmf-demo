@@ -14,6 +14,7 @@ public class SwitchCharacter : MonoBehaviour
         Tomas = 3
     }
 
+    public int health = 3;
     [Header("Characters Values")]
     public Character characterEnum;
     
@@ -52,8 +53,20 @@ public class SwitchCharacter : MonoBehaviour
     private void Update()
     {
         UpdateCharacter();
+        if (health <= 0)
+        {
+            //TODO: DESTROY/RELOAD OR OTHER THINGS
+            
+        }
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            health--;
+        }
+    }
     private void UpdateCharacter()
     {
         switch (characterEnum)
@@ -150,6 +163,8 @@ public class SwitchCharacter : MonoBehaviour
         _capsuleCollider2D.offset = _colliderDefaultOffset;
     }
 
+    #region buttons for call
+
     //Method for switch characters from UI buttons 
     public void Switch2Lyon()
     {
@@ -167,4 +182,7 @@ public class SwitchCharacter : MonoBehaviour
     {
         characterEnum = Character.Tomas;
     }
+
+    #endregion
+   
 }
