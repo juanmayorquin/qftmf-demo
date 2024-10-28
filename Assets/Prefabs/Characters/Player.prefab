@@ -396,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  _gameController: {fileID: 6174179866372158663, guid: e467ea3f487479e43a7ebfd4e35af24c, type: 3}
   characterEnum: 0
   characterGO:
   - {fileID: 5332871941669201708}

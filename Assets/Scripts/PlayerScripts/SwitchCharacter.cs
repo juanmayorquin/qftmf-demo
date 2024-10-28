@@ -15,6 +15,9 @@ public class SwitchCharacter : MonoBehaviour
     }
 
     public int health = 3;
+    [SerializeField] private GameController _gameController;
+    
+    [Space(3)]
     [Header("Characters Values")]
     public Character characterEnum;
     
@@ -65,8 +68,18 @@ public class SwitchCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("Spike"))
         {
             health--;
+            _gameController.Reload();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Fall"))
+        {
+            _gameController.Reload();
+        }
+    }
+
     private void UpdateCharacter()
     {
         switch (characterEnum)

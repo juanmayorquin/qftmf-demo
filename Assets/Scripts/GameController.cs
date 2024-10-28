@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour
 
         // Listen whe the ey is released
         _playerControllers.Player.Menu.canceled += CloseMenu;
+
     }
 
     private void OnDisable()
