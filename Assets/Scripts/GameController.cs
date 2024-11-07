@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameController : MonoBehaviour
     private float time;
     
     [SerializeField] private GameObject characterMenu;
+    [SerializeField] private Image timeBar; 
     private bool _isMenuOpen = false;
     
     [SerializeField] private PlayerInput _playerInput;
@@ -23,6 +25,11 @@ public class GameController : MonoBehaviour
         time = Time.deltaTime;
         playTime -= time;
 
+        if (timeBar != null) 
+        {
+            timeBar.fillAmount = playTime / 10f; 
+        }
+        
         if (playTime <= 0 && !isFinished)
         {
             //TODO: LOSER FEEDBACK
