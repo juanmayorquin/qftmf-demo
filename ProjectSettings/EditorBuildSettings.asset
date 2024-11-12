@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Pablo Scene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenu.unity
+    guid: c718e21cca34793468c68d2a50819e81
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 3e0ecc84fcc395949b20ece8117af406
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 089bf0719e9e3d84d8f3379e87b6e412
   m_configObjects: {}

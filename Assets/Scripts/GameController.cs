@@ -19,6 +19,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
 
     private PlayerControllers _playerControllers;
+    
+    [Header("Feedbacks and UI")]
+    [SerializeField] private GameObject FeedbackNegativo;
+    [SerializeField] private GameObject FeedbackPositivo;
 
     private void Update()
     {
@@ -32,12 +36,12 @@ public class GameController : MonoBehaviour
         
         if (playTime <= 0 && !isFinished)
         {
-            //TODO: LOSER FEEDBACK
+            StartCoroutine(ShowPanelAndSwitchScene(FeedbackNegativo));
         }
 
         if (isFinished)
         {
-            //TODO: WINNER FEEDBACK
+            StartCoroutine(ShowPanelAndSwitchScene(FeedbackPositivo));
         }
     }
 
@@ -99,5 +103,22 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1;
             characterMenu.SetActive(false);
         }
+    }
+
+    public void GoMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    IEnumerator ShowPanelAndSwitchScene(GameObject panel)
+    {
+        // Hacemos visible el panel
+        panel.SetActive(true);
+        
+        // Esperamos 2 segundos
+        yield return new WaitForSeconds(2f);
+        // Ocultamos el panel
+        panel.SetActive(false);
+        // Cargamos la escena "MainMenu"
+        SceneManager.LoadScene("MainMenu");
     }
 }

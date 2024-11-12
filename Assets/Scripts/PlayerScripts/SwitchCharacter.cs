@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class SwitchCharacter : MonoBehaviour
@@ -42,6 +43,9 @@ public class SwitchCharacter : MonoBehaviour
     // [Header("Mario Stats")] 
     [Header("Tomas Stats")] 
     [SerializeField] private float _speedTomas;
+    
+    [Header("Feedbacks and UI")]
+    [SerializeField] private GameObject FeedbackNegativo;
 
     private void Awake()
     {
@@ -58,7 +62,7 @@ public class SwitchCharacter : MonoBehaviour
         UpdateCharacter();
         if (health <= 0)
         {
-            //TODO: DESTROY/RELOAD OR OTHER THINGS
+            StartCoroutine(ShowPanelAndSwitchScene(FeedbackNegativo));
             
         }
     }
@@ -174,6 +178,18 @@ public class SwitchCharacter : MonoBehaviour
     {
         _capsuleCollider2D.size = _colliderDefaultSize;
         _capsuleCollider2D.offset = _colliderDefaultOffset;
+    }
+    IEnumerator ShowPanelAndSwitchScene(GameObject panel)
+    {
+        // Hacemos visible el panel
+        panel.SetActive(true);
+        
+        // Esperamos 2 segundos
+        yield return new WaitForSeconds(2f);
+        // Ocultamos el panel
+        panel.SetActive(false);
+        // Cargamos la escena "MainMenu"
+        SceneManager.LoadScene("MainMenu");
     }
 
     #region buttons for call
