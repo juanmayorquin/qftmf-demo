@@ -16,6 +16,7 @@ public class SwitchCharacter : MonoBehaviour
     }
 
     public int health = 3;
+    public int fruits = 0;
     [SerializeField] private GameController _gameController;
     
     [Space(3)]
@@ -81,6 +82,11 @@ public class SwitchCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("Fall"))
         {
             _gameController.Reload();
+        }
+        if (other.gameObject.CompareTag("fruit"))
+        {
+            fruits++;
+            other.gameObject.SetActive(false);
         }
     }
 

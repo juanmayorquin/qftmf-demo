@@ -264,8 +264,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4529088682571025639}
   - {fileID: 3048021599320680201}
@@ -396,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  fruits: 0
   _gameController: {fileID: 6174179866372158663, guid: e467ea3f487479e43a7ebfd4e35af24c, type: 3}
   characterEnum: 3
   characterGO:
@@ -403,10 +404,11 @@ MonoBehaviour:
   - {fileID: 4350199722370149222}
   - {fileID: 6399479186753750481}
   - {fileID: 5715019497728219774}
-  capsuleSmallSize: {x: 1, y: 1.39}
-  capsuleSmallOffset: {x: 0, y: -0.08}
+  capsuleSmallSize: {x: 0.81, y: 1.22}
+  capsuleSmallOffset: {x: -0.03, y: -0.08}
   _jumpLyonForce: 8
   _speedTomas: 7
+  FeedbackNegativo: {fileID: 0}
 --- !u!1 &5332871941669201708
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3031208225309394361
 Transform:
   m_ObjectHideFlags: 0
@@ -541,8 +543,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.0524845, y: 3.0942495, z: -373.92953}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4529088682571025639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
