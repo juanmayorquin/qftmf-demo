@@ -8,6 +8,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
 
     private PlayerControllers _playerControllers;
+    private AudioSource _audioSource;
     [SerializeField] private Vector2 _direction;
     
     public float speedMovement;
@@ -28,6 +29,7 @@ public class MovementController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb2D = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
 
         defaultJump = jumpForce;
         defaultSpeed = speedMovement;
@@ -91,6 +93,7 @@ public class MovementController : MonoBehaviour
         if (canJump)  
         {
             _rb2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);  
+            _audioSource.Play();
         }
     }
 
