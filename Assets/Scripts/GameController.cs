@@ -8,12 +8,14 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public float playTime = 10f;
+    public float playTime;
     public bool isFinished;
     private float time;
+    private float totalTime;
+    public bool level1;
     
     [SerializeField] private GameObject characterMenu;
-    [SerializeField] private Image timeBar; 
+    [SerializeField] private Image BarTimeImage;
     private bool _isMenuOpen = false;
     
     [SerializeField] private PlayerInput _playerInput;
@@ -29,25 +31,34 @@ public class GameController : MonoBehaviour
         time = Time.deltaTime;
         playTime -= time;
 
-        if (timeBar != null) 
+        if (BarTimeImage != null) 
         {
-            timeBar.fillAmount = playTime / 10f; 
+            BarTimeImage.fillAmount = playTime / totalTime; 
         }
         
         if (playTime <= 0 && !isFinished)
         {
-            StartCoroutine(ShowPanelAndSwitchScene(FeedbackNegativo));
+            StartCoroutine(ShowPanelAndSwitchScene(FeedbackNegativo, "MainMenu"));
         }
 
-        if (isFinished)
+        if (isFinished && level1)
         {
-            StartCoroutine(ShowPanelAndSwitchScene(FeedbackPositivo));
+            StartCoroutine(ShowPanelAndSwitchScene(FeedbackPositivo, "Level2"));
+        }
+        if (isFinished && !level1)
+        {
+            StartCoroutine(ShowPanelAndSwitchScene(FeedbackPositivo, "MainMenu"));
         }
     }
 
     private void Awake()
     {
         _playerControllers = new PlayerControllers();
+    }
+
+    private void Start()
+    {
+        totalTime = playTime;
     }
 
     private void OnEnable()
@@ -109,16 +120,15 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-    IEnumerator ShowPanelAndSwitchScene(GameObject panel)
+    IEnumerator ShowPanelAndSwitchScene(GameObject panel, string NameScene)
     {
         // Hacemos visible el panel
         panel.SetActive(true);
-        
         // Esperamos 2 segundos
         yield return new WaitForSeconds(2f);
         // Ocultamos el panel
         panel.SetActive(false);
         // Cargamos la escena "MainMenu"
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(NameScene);
     }
 }
