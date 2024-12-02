@@ -61,6 +61,11 @@ sysinfo.txt
 *.unitypackage
 *.app
 
+
+# Idles settings
+.idea/
+.vscode/
+
 # Crashlytics generated file
 crashlytics-build.properties
 
